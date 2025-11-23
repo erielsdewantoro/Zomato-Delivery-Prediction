@@ -7,7 +7,7 @@ import seaborn as sns
 
 # --- 1. CONFIGURATION & SETUP ---
 st.set_page_config(
-    page_title="Zomato AI Delivery Predictor",
+    page_title="Zomato Delivery Predictor",
     page_icon="🛵",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -169,3 +169,4 @@ with tab3:
         - **Delivery_person_Ratings:** Rating Kinerja
         - **Time_taken:** Target Prediksi (Waktu)
         """)
+
