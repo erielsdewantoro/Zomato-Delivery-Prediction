@@ -133,7 +133,7 @@ with tab1:
 
 # --- TAB 2: ANALISIS MODEL ---
 with tab2:
-    st.header("🧠 Di Balik Layar AI")
+    st.header("Top Fitur")
     st.markdown("Model ini menggunakan **Random Forest Regressor** dengan akurasi R2 Score ~75%.")
     
     # Feature Importance Plot (Static Image or Interactive)
@@ -169,5 +169,6 @@ with tab3:
         - **Delivery_person_Ratings:** Rating Kinerja
         - **Time_taken:** Target Prediksi (Waktu)
         """)
+
 
 
