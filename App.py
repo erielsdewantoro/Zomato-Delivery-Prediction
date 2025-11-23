@@ -133,22 +133,29 @@ with tab1:
 
 # --- TAB 2: ANALISIS MODEL ---
 with tab2:
-    st.header("Top Fitur")
-    st.markdown("Model ini menggunakan **Random Forest Regressor** dengan akurasi R2 Score ~75%.")
+    st.header("🧠 Interpretasi Model (SHAP Values)")
+    st.write("""
+    Model ini menggunakan **SHAP (SHapley Additive exPlanations)** untuk menjelaskan bagaimana setiap fitur mempengaruhi prediksi waktu.
+    Grafik di bawah ini menunjukkan **Global Feature Importance**:
+    """)
     
-    # Feature Importance Plot (Static Image or Interactive)
-    # Karena kita tidak bisa load training data di sini, kita buat dummy plot atau hardcode nilai penting
-    # Ini contoh data Feature Importance dari notebook Anda
-    features = ['Rating Kurir', 'Jarak (km)', 'Umur Kurir', 'Traffic Jam', 'Prep Time']
-    importance = [0.24, 0.18, 0.13, 0.11, 0.08]
+    # Tampilkan Gambar SHAP Statis
+    try:
+        st.image("shap_summary.png", caption="Analisis Dampak Fitur terhadap Waktu Pengiriman", use_container_width=True)
+    except:
+        st.warning("Gambar SHAP belum tersedia. Pastikan 'shap_summary.png' ada di repository.")
+
+    # Penjelasan Naratif (Sama seperti PPT)
+    st.info("""
+    **Cara Membaca Grafik:**
+    * 🔴 **Titik Merah** (Nilai Tinggi) di sebelah **KIRI** = Mempercepat Pengiriman.
+    * 🔵 **Titik Biru** (Nilai Rendah) di sebelah **KANAN** = Memperlambat Pengiriman.
     
-    fig, ax = plt.subplots()
-    sns.barplot(x=importance, y=features, palette='viridis', ax=ax)
-    ax.set_title('Top 5 Faktor Penentu Kecepatan')
-    ax.set_xlabel('Tingkat Pengaruh')
-    st.pyplot(fig)
-    
-    st.info("💡 **Insight:** Rating kurir dan Jarak adalah dua faktor terbesar yang mempengaruhi kecepatan pengiriman.")
+    **Insight Utama:**
+    1. **Rating Kurir:** Rating tinggi (Merah) sangat kuat menarik waktu ke kiri (Lebih Cepat).
+    2. **Jarak:** Jarak jauh (Merah) menarik waktu ke kanan (Lebih Lama).
+    3. **Prep Time:** Waktu masak lama juga berkontribusi pada keterlambatan.
+    """)
 
 # --- TAB 3: DATASET ---
 with tab3:
@@ -169,6 +176,7 @@ with tab3:
         - **Delivery_person_Ratings:** Rating Kinerja
         - **Time_taken:** Target Prediksi (Waktu)
         """)
+
 
 
 
